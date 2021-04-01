@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Recommender</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Recommended Movies</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+
+
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="experience" placeholder="Enter Movie Name " required="required" />
+    
+
+        <button type="submit" style="color: aliceblue;" class="btn btn-primary btn-block btn-large">Show</button>
+    </form>
+    <div>
+   <br>
+   <br>
+   
+      <div class="col-75">
+        <div class="overflow-auto">
+     
+   {% for movie in movies %}
+
+  
+
+   <p style="color: aliceblue;">{{ f(movie[0])   }} </p> <!--calling function along with parameter   -->
+
+        {% endfor%}
+        </div>
+ </div>
+</div>
+
+
+
+</body>
+</html>
